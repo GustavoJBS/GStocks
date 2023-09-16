@@ -5,7 +5,7 @@
         <x-input
             right-icon="mail"
             label="E-Mail"
-            placeholder="your e-mail address"
+            placeholder="Your e-mail address"
             wire:model='email'
         />
 
@@ -13,7 +13,7 @@
             type="password"
             label="Password"
             wire:model='password'
-            placeholder="your password"
+            placeholder="Your password"
         />
 
         <x-toggle

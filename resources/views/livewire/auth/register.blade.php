@@ -12,14 +12,14 @@
         <x-input
             right-icon="user"
             label="Name"
-            placeholder="your name"
+            placeholder="Your name"
             wire:model='name'
         />
         
         <x-input
             right-icon="mail"
             label="E-Mail"
-            placeholder="your e-mail address"
+            placeholder="Your e-mail address"
             wire:model='email'
         />
 
@@ -27,14 +27,14 @@
             type="password"
             label="Password"
             wire:model='password'
-            placeholder="your password"
+            placeholder="Your password"
         />
 
         <x-input
             type="password"
             label="Confirm Password"
             wire:model='passwordConfirmation'
-            placeholder="confirm your password"
+            placeholder="Confirm your password"
         />
 
         <div class="flex gap-3 mt-4 w-full">

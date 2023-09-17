@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static array getTickerPrice(string $symbol)
+ * @method static array getCompanyProvents(string $symbol)
  *
  * @see \App\Services\Stocks
  */

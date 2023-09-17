@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 
 class Stocks
@@ -20,11 +21,21 @@ class Stocks
 
     public function getTickerPrice(string $ticker): array
     {
-        $response = collect($this->httpClient->get('/acao/tickerprice', [
+        $response = collect($this->httpClient->get('acao/tickerprice', [
             'ticker' => $ticker,
             'type' => 0
         ])->json())->first();
 
-        return (array) $response;
+        return $response;
+    }
+
+    public function getCompanyProvents(string $ticker): array 
+    {
+        $response = collect($this->httpClient->get('acao/companytickerprovents', [
+            'ticker' => $ticker,
+            'chartProventsType' => 2
+        ])->json())->toArray();
+
+        return $response;
     }
 }

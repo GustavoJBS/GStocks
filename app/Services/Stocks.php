@@ -14,9 +14,8 @@ class Stocks
 
     public function __construct()
     {
-        $this->httpClient = Http::baseUrl(self::BASE_URL)->withHeaders([
-            'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36',
-        ]);
+        $this->httpClient = Http::baseUrl(self::BASE_URL)
+            ->withUserAgent(config('services.user-agent'));
     }
 
     public function getTickerPrice(string $ticker): array
@@ -35,6 +34,15 @@ class Stocks
             'ticker' => $ticker,
             'chartProventsType' => 2
         ])->json())->toArray();
+
+        return $response;
+    }
+
+    public function getHistoricalPrice(string $ticker): array 
+    {
+        $response = collect(
+            $this->httpClient->post("acao/indicatorhistorical?ticker={$ticker}&time=5")->json()
+        )->toArray();
 
         return $response;
     }

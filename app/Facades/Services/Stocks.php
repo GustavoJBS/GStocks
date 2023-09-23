@@ -6,8 +6,9 @@ use App\Services\Stocks as ServicesStocks;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static array getTickerPrice(string $symbol)
- * @method static array getCompanyProvents(string $symbol)
+ * @method static array getTickerPrice(string $ticker)
+ * @method static array getCompanyProvents(string $ticker)
+ * @method static array getHistoricalPrice(string $ticker)
  *
  * @see \App\Services\Stocks
  */

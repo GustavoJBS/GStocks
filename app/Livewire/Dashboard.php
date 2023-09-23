@@ -8,6 +8,10 @@ use Livewire\Component;
 
 class Dashboard extends Component
 {
+    public function mount () {
+        dd(Stocks::getHistoricalPrice('B3SA3'));
+    }
+
     public function logout() {
         auth()->logout();
 

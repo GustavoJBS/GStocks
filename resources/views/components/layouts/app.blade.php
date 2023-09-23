@@ -10,10 +10,12 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-[Roboto] font-medium w-screen h-screen">
-        <div class="w-full h-full flex bg-slate-100" x-data="{ sideBarOpen: false }">
-            @auth
-                <x-sidebar />
-            @endauth
+        <div 
+            class="flex bg-slate-100" 
+            x-data="{ sideBarOpen: false }"  
+            x-cloak
+        >
+            <x-sidebar />
 
             {{ $slot }}
         </div>

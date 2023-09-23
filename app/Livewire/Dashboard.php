@@ -9,13 +9,7 @@ use Livewire\Component;
 class Dashboard extends Component
 {
     public function mount () {
-        dd(Stocks::getHistoricalPrice('MXRF11'));
-    }
-
-    public function logout() {
-        auth()->logout();
-
-        redirect(route('login'));
+        // dd(Stocks::getHistoricalPrice('MXRF11'));
     }
     
     public function render(): View

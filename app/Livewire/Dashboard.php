@@ -9,7 +9,7 @@ use Livewire\Component;
 class Dashboard extends Component
 {
     public function mount () {
-        dd(Stocks::getHistoricalPrice('B3SA3'));
+        dd(Stocks::getHistoricalPrice('MXRF11'));
     }
 
     public function logout() {

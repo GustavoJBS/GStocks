@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    <div class="relative hidden w-0 flex-1 sm:block">
+    <div class="relative hidden flex-1 sm:block">
         <img
             class="absolute inset-0 h-full w-full object-cover"
             src="{{ asset('img/login-background.png') }}"

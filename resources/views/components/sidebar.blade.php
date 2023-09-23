@@ -1,12 +1,12 @@
 <div x-cloak class="flex">
     <div
-        @click="sidebarOpen=false"
-        :class="$data['sidebarOpen'] ? 'clock' : 'hidden'"
+        @click="sideBarOpen=false"
+        :class="$data['sideBarOpen'] ? 'clock' : 'hidden'"
         class="fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden"
     ></div>
 
     <div
-        :class="$data['sidebarOpen'] ? 'translate-x-0 ease-in' : '-translate-x-full ease-out'"
+        :class="$data['sideBarOpen'] ? 'translate-x-0 ease-in' : '-translate-x-full ease-out'"
         @class([
             'flex flex-col h-screen bg-primary-700 fixed inset-y-0 left-0 z-30',
             'w-60 px-4 py-8 transition duration-200',
@@ -26,7 +26,13 @@
                 <x-sidebar.menu 
                     name="Dashboard"
                     route-name="dashboard"
-                    icon="chart-pie"
+                    icon="home"
+                />
+
+                <x-sidebar.menu 
+                    name="Meus Ativos"
+                    route-name="stocks.index"
+                    icon="chart-bar"
                 />
             </div>
 

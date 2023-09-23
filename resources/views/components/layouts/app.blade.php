@@ -11,7 +11,7 @@
     </head>
     <body class="font-[Roboto] font-medium w-screen h-screen">
         <div 
-            class="flex bg-slate-100" 
+            class="w-full flex bg-slate-100" 
             x-data="{ sideBarOpen: false }"  
             x-cloak
         >

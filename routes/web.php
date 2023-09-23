@@ -3,6 +3,7 @@
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Dashboard;
+use App\Livewire\Stocks;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,10 +29,16 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', Dashboard::class)->name('dashboard');
 
+    Route::group([
+        'prefix' => 'stocks',
+        'as' => 'stocks.'
+    ], function () {
+        Route::get('/', Stocks\Index::class)->name('index');
+    });
+
     Route::get('logout', function () {
         auth()->logout();
 
         return redirect(route('login'));
     })->name('logout');
 });
-

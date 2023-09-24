@@ -34,8 +34,6 @@ Route::middleware(['auth'])->group(function () {
         'as' => 'stocks.'
     ], function () {
         Route::get('/', Stocks\Index::class)->name('index');
-
-        Route::get('/search-assets', [Stocks\Save::class, 'search'])->name('search-assets');
     });
 
     Route::get('logout', function () {

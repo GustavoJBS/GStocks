@@ -25,6 +25,8 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             $table->float('quantity');
+            $table->float('price');
+            
             $table->integer('type')->default(0);
 
             $table->timestamps();

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static array getTickerPrice(string $ticker)
  * @method static array getCompanyProvents(string $ticker)
  * @method static array getHistoricalPrice(string $ticker)
+ * @method static array searchTicker(string $search)
  *
  * @see \App\Services\Stocks
  */

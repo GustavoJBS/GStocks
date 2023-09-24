@@ -26,13 +26,13 @@ class Login extends Component
     {
         $this->validate();
 
-        if (Auth::attempt($this->only('email', 'password'), $this->rememberMe)) {
+        if (Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->rememberMe)) {
             session()->regenerate();
 
             return redirect(route('home'));
         }
 
-        $this->addError('username', __('auth.failed'));
+        $this->addError('email', __('auth.failed'));
     }
 
     public function navigateToRegister(): Redirector | RedirectResponse

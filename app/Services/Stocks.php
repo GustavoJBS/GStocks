@@ -46,4 +46,13 @@ class Stocks
 
         return $response;
     }
+
+    public function searchTicker(string $search): array
+    {
+        $response = collect(
+            $this->httpClient->post("home/mainsearchquery?q={$search}")->json()
+        )->toArray();
+
+        return $response;
+    }
 }

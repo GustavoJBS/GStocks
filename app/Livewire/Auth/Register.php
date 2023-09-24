@@ -15,9 +15,7 @@ use Livewire\Attributes\Rule;
 
 class Register extends Component
 {
-    #[Rule(['required', 'min:5'], 'name')]
     public ?string $name = null;
-    #[Rule(['required', 'unique:users,email'], 'email')]
     public ?string $email = null;
     public ?string $password = null;
     public ?string $passwordConfirmation = null;
@@ -25,6 +23,8 @@ class Register extends Component
     protected function rules(): array
     {
         return [
+            'name' => ['required', 'min:5'],
+            'email' => ['required', 'unique:users,email'],
             'password'             => ['required', 'string', Password::defaults()],
             'passwordConfirmation' => ['required', 'same:password'],
         ];
@@ -53,6 +53,7 @@ class Register extends Component
     public function render(): View
     {
         return view('livewire.auth.register')
-            ->layout('components.layouts.auth');;
+            ->layout('components.layouts.auth');
+        ;
     }
 }

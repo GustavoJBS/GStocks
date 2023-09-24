@@ -8,7 +8,9 @@
 
         @wireUiScripts
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
     </head>
+    
     <body class="font-[Roboto] font-medium w-screen h-screen">
         <div 
             class="w-full flex bg-slate-100" 
@@ -19,5 +21,7 @@
 
             {{ $slot }}
         </div>
+
+        @livewireScripts
     </body>
 </html>

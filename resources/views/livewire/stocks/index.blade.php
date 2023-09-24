@@ -1,9 +1,9 @@
 <div class="flex flex-col overflow-y-auto h-screen w-full">
-    <x-navbar 
-        title="Movimentações de Ativos" 
-    >
+    <x-navbar title="Meus Ativos">
         @slot('buttons')
-            <x-button label="Adicionar" icon="plus" positive />
+            <div>
+                <livewire:stocks.save />
+            </div>
         @endslot
     </x-navbar>
 

@@ -8,6 +8,6 @@
     </x-navbar>
 
     <div class="px-8 py-9">
-        Hello World
+        {{ $this->table }}
     </div>
 </div>

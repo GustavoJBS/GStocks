@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800;900&display=swap');
+@import '../../vendor/filament/forms/dist/module.esm.css';
 
 [x-cloak] {
 	display: none !important;
 }
 
 @tailwind base;
+
+.filament-link-icon {
+    @apply w-5 h-5 !important;
+}
+
 @tailwind components;
 @tailwind utilities;

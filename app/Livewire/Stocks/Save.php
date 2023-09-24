@@ -25,6 +25,7 @@ class Save extends Component
         'assetMovement.user_id' => ['required', 'exists:users,id'],
         'assetMovement.quantity' => ['required', 'numeric'],
         'assetMovement.price' => ['required', 'numeric'],
+        'assetMovement.type' => ['required'],
 
         'assetMomementToggle' => ['bool'],
         'selectedAsset' => ['required']

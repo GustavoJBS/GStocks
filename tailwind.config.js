@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors.js');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     presets: [
@@ -7,7 +9,8 @@ module.exports = {
         "./resources/**/*.blade.php",
         './vendor/wireui/wireui/resources/**/*.blade.php',
         './vendor/wireui/wireui/ts/**/*.ts',
-        './vendor/wireui/wireui/src/View/**/*.php'
+        './vendor/wireui/wireui/src/View/**/*.php',
+        './vendor/filament/**/*.blade.php'
     ],
     theme: {
         extend: {
@@ -15,6 +18,7 @@ module.exports = {
                 sans: ["Roboto", "sans-serif"],
             },
             colors: {
+                danger: colors.rose,
                 primary: {
                     50: '#f5f9f4',
                     100: '#e5f3e5',

@@ -21,6 +21,10 @@ class Save extends Component
 
     public array $assetsList = [];
 
+    protected $listeners = [
+        'asset-movement:edit' => 'edit'
+    ];
+
     protected array $rules = [
         'assetMovement.user_id' => ['required', 'exists:users,id'],
         'assetMovement.quantity' => ['required', 'numeric'],
@@ -57,6 +61,17 @@ class Save extends Component
             'user_id' => auth()->user()->id,
             'type' => AssetMovementType::BUY->value
         ]);
+
+        $this->reset(['selectedAsset', 'searchAssets', 'assetsList']);
+    }
+
+    public function edit(AssetMovement $assetMovement) 
+    {
+        $this->assetMovement = $assetMovement;
+
+        $this->selectedAsset = $assetMovement->asset->toArray();
+
+        $this->assetMomementToggle = !$this->assetMomementToggle;
     }
 
     public function setAssetsList(): void
@@ -79,9 +94,9 @@ class Save extends Component
     {
         $this->assetMovement->asset_id = Asset::query()
             ->createOrFirst(
-                ['ticker' => $this->selectedAsset['code']],
+                ['code' => $this->selectedAsset['code']],
                 [
-                    'name' => $this->selectedAsset['nameFormated'],
+                    'name' => $this->selectedAsset['name'],
                     'type' => $this->selectedAsset['type']
                 ]
             )->id;
@@ -94,6 +109,8 @@ class Save extends Component
         $this->setAssetId();
 
         $this->assetMovement->save();
+
+        $this->emit('refresh');
 
         $this->toggleModal();
     }

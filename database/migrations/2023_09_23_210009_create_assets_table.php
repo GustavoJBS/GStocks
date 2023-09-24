@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('ticker');
+            $table->string('code');
             $table->integer('type')->default(0);
 
             $table->timestamps();

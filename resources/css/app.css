@@ -7,7 +7,7 @@
 
 @tailwind base;
 
-.filament-link-icon {
+.filament-icon-button-icon {
     @apply w-5 h-5 !important;
 }
 

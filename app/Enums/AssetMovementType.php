@@ -21,4 +21,18 @@ enum AssetMovementType: int
             'value' => $enum->value
         ], self::cases());
     }
+
+    public static function getStrings(): array
+    {
+        return collect(self::selectCases())->pluck('label', 'value')->toArray();
+    }
+
+    public static function getColors(): array
+    {
+        return [
+            'warning',
+            'success' => self::BUY->value,
+            'danger' => self::SELL->value
+        ];
+    }
 }

@@ -19,6 +19,8 @@ module.exports = {
             },
             colors: {
                 danger: colors.rose,
+                success: colors.green,
+                warning: colors.yellow,
                 primary: {
                     50: '#f5f9f4',
                     100: '#e5f3e5',

@@ -14,7 +14,7 @@ class Money implements CastsAttributes
      */
     public function get(Model $model, string $key, mixed $value, array $attributes): mixed
     {
-        return $value * 100;
+        return is_numeric($value) ? $value * 100 : $value;
     }
 
     /**
@@ -24,6 +24,6 @@ class Money implements CastsAttributes
      */
     public function set(Model $model, string $key, mixed $value, array $attributes): mixed
     {
-        return $value / 100;
+        return is_numeric($value) ? $value / 100 : $value;
     }
 }

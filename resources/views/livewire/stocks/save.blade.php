@@ -77,7 +77,7 @@
             <x-slot name="footer">
                 <div class="flex w-full justify-between">
                     <x-button 
-                        label="Camceçar" 
+                        label="Cancelar" 
                         wire:click='toggleModal' 
                     />
     

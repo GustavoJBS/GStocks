@@ -24,11 +24,12 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
 
-            $table->float('quantity');
-            $table->float('price');
+            $table->bigInteger('quantity');
+            $table->bigInteger('price');
             
             $table->integer('type')->default(0);
 
+            $table->timestamp('date');
             $table->timestamps();
         });
     }

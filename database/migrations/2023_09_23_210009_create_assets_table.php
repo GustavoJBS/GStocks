@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
+            $table->string('nameFormated');
             $table->string('code');
             $table->integer('type')->default(0);
 

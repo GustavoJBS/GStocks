@@ -7,6 +7,7 @@ use App\Enums\AssetMovementType;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AssetMovement extends Model
 {
@@ -19,7 +20,7 @@ class AssetMovement extends Model
         'price' => Money::class
     ];
 
-    public function asset() 
+    public function asset(): BelongsTo
     {
         return $this->belongsTo(Asset::class);
     }

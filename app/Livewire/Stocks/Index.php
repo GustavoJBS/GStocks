@@ -17,6 +17,9 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\BadgeColumn;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
+use Illuminate\Contracts\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Model;
 
 class Index extends Component implements HasTable
@@ -40,7 +43,7 @@ class Index extends Component implements HasTable
     protected function getTableColumns(): array 
     {
         return [
-            Tables\Columns\TextColumn::make('id')->sortable(),
+            Tables\Columns\TextColumn::make('id')->sortable()->searchable(),
             Tables\Columns\TextColumn::make('asset.code')->label('Ativo'),
             BadgeColumn::make('type')->label('Tipo de Movimentação')
                 ->enum(AssetMovementType::getStrings())
@@ -53,28 +56,26 @@ class Index extends Component implements HasTable
  
     protected function getTableFilters(): array
     {
-        return [];
+        return [
+            SelectFilter::make('asset_id')
+                ->label('Ativo')
+                ->options(Asset::whereHas('movements')->get()->pluck('code', 'id')),
+            SelectFilter::make('type')
+                ->label('Tipo de Movimentação')
+                ->options(AssetMovementType::getStrings()),
+        ];
     }
  
     protected function getTableActions(): array
     {
         return [
             DeleteAction::make()
-                ->iconButton(),
+                ->iconButton()
+                ->modalHeading('Deletar Movimentação de Ativo'),
             EditAction::make()
                 ->iconButton()
                 ->action(fn (Model $record) => $this->emit('asset-movement:edit', $record->id))
         ];
-    }
- 
-    protected function getTableBulkActions(): array
-    {
-        return [];
-    } 
-
-    public function edit() 
-    {
-        dd(request()->all());
     }
 
     public function render(): View

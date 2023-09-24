@@ -13,7 +13,8 @@
 
     <body class="font-[Roboto] font-medium w-screen h-screen">
         {{ $slot }}
-
+        
+        @livewire('notifications')
         @livewireScripts
     </body>
 </html>

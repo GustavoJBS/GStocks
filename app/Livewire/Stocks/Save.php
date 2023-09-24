@@ -93,16 +93,17 @@ class Save extends Component
     public function setAssetId(): void
     {
         $this->assetMovement->asset_id = Asset::query()
-            ->createOrFirst(
-                ['code' => $this->selectedAsset['code']],
+            ->firstOrCreate(
                 [
                     'name' => $this->selectedAsset['name'],
-                    'type' => $this->selectedAsset['type']
+                    'nameFormated' => $this->selectedAsset['nameFormated'],
+                    'type' => $this->selectedAsset['type'],
+                    'code' => $this->selectedAsset['code']
                 ]
             )->id;
     }
 
-    public function save() 
+    public function save(): void
     {
         $this->validate();
 

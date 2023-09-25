@@ -17,7 +17,8 @@ class AssetMovement extends Model
 
     protected $casts = [
         'type' => AssetMovementType::class,
-        'price' => Money::class
+        'price' => Money::class,
+        'date' => 'datetime'
     ];
 
     public function asset(): BelongsTo

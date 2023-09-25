@@ -35,4 +35,9 @@ enum AssetMovementType: int
             'danger' => self::SELL->value
         ];
     }
+
+    public function isBuy(): bool
+    {
+        return $this === self::BUY;
+    }
 }

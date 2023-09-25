@@ -37,17 +37,19 @@ class Index extends Component implements HasTable
 
     protected function getTableQuery(): Builder
     {
-        return AssetMovement::query();
+        return AssetMovement::query()
+            ->orderByDesc('date')
+            ->where('user_id', auth()->id());
     }
  
     protected function getTableColumns(): array 
     {
         return [
-            Tables\Columns\TextColumn::make('id')->sortable()->searchable(),
             Tables\Columns\TextColumn::make('asset.code')->label('Ativo'),
             BadgeColumn::make('type')->label('Tipo de Movimentação')
                 ->enum(AssetMovementType::getStrings())
                 ->colors(AssetMovementType::getColors()),
+            Tables\Columns\TextColumn::make('date')->label('Data')->dateTime('d/m/y'),
             Tables\Columns\TextColumn::make('quantity')->label('Quantidade'),
             Tables\Columns\TextColumn::make('price')->label('Preço')->money('brl', true),
             Tables\Columns\TextColumn::make('totalAmount')->label('Valor Total')->money('brl', true)

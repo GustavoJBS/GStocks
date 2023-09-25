@@ -30,6 +30,7 @@ class Save extends Component
         'assetMovement.quantity' => ['required', 'numeric'],
         'assetMovement.price' => ['required', 'numeric'],
         'assetMovement.type' => ['required'],
+        'assetMovement.date' => ['required'],
 
         'assetMomementToggle' => ['bool'],
         'selectedAsset' => ['required']
@@ -59,7 +60,8 @@ class Save extends Component
 
         $this->assetMovement = new AssetMovement([
             'user_id' => auth()->user()->id,
-            'type' => AssetMovementType::BUY->value
+            'type' => AssetMovementType::BUY->value,
+            'date' => null
         ]);
 
         $this->reset(['selectedAsset', 'searchAssets', 'assetsList']);

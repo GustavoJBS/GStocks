@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('code');
             $table->integer('type')->default(0);
 
+            $table->integer('last_price')->default(0);
+
             $table->timestamps();
         });
     }

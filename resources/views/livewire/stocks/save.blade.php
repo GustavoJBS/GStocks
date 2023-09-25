@@ -72,6 +72,16 @@
                         wire:model="assetMovement.price"
                     />
                 </div>
+
+                @if ($assetMovement)
+                    <x-datetime-picker
+                        label="Data da Movimentação"
+                        placeholder="Appointment Date"
+                        wire:model="assetMovement.date"
+                        display-format="DD/MM/YYYY"
+                        without-time="true"
+                    />
+                @endif
             </div>
             
             <x-slot name="footer">

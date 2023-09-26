@@ -3,6 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Akaunting\Money\Currency;
+use Akaunting\Money\Money;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -47,5 +51,25 @@ class User extends Authenticatable
     public function assetMovements(): HasMany
     {
         return $this->hasMany(AssetMovement::class);      
+    }
+
+    public function currentBalance(): Attribute
+    {
+        return new Attribute(
+            get: function () {
+                $userBalance = Asset::withWhereHas('movements')->get()
+                    ->reduce(function ($accumulatorBalance, Asset $asset) {
+                        return $accumulatorBalance + $asset->currentBalance ;
+                    }, 0);
+
+                $userBalance = (new Money(
+                        $userBalance,
+                        (new Currency('BRL')),
+                        true,
+                    ))->format();
+
+                return $userBalance;
+            }
+        );
     }
 }

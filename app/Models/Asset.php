@@ -47,15 +47,28 @@ class Asset extends Model
                         ->value();
 
                     $this->last_price = $lastPrice;
-
+                    $this->updated_at = now();
                     $this->save();
         
                     return $this->last_price;
                 }
 
                 return $this->last_price;
-                
             } 
+        );
+    }
+
+    public function currentBalance(): Attribute
+    {
+        return new Attribute(
+            get: fn () => $this->assetValue * $this->assetQuantity
+        );
+    }
+
+    public function assetProfit(): Attribute
+    {
+        return new Attribute(
+            get: fn () => $this->currentBalance - $this->movements->sum('total_amount')
         );
     }
 }

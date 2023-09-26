@@ -12,7 +12,7 @@
 >
     <div
         @class([
-            'flex justify-between items-center'
+            'flex justify-between items-end'
         ])
     >
         <button @click="sideBarOpen = !sideBarOpen" class="text-gray-500 lg:hidden focus:outline-none">
